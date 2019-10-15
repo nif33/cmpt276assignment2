@@ -9,6 +9,13 @@
 
     <h1>Hello Trainer!</h1>
     <h3>Welcome to the Tokidex, a place where you can keep track of all the Tokimon you encounter in your adventures.</h3>
-    
+
+    <ul>
+      <% rows.forEach((r) => { %>
+        <li><%= r.name %></li>
+      <% }); %>
+
+    </ul>
+
   </body>
 </html>
