@@ -4,11 +4,27 @@ h1{
   font-family: Arial;
   text-align: center;
   padding: 5px;
+  font-size: 20px;
 }
-h3{
+h3, a{
   font-family: Arial;
   padding: 10px;
 }
 body{
   background-color: #fcefae;
+}
+table{
+  width:100%
+}
+tr{
+  font-family: Arial;
+  font-size: 16px;
+}
+button{
+  background-color: #38b9f5;
+  color: white;
+  padding: 10px;
+  border-radius: 2px;
+  border: 0px;
+  margin: 5px;
 }
