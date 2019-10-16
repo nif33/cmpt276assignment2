@@ -12,11 +12,11 @@ express()
 
   .use(express.json())
   .use(express.urlencoded({ extended: false }))
-  
+
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
-  .get('/tokidex', (req,res) => {
+/*  .get('/tokidex', (req,res) => {
     var getTokimonQuery = `SELECT * FROM tokimon`;
     pool.query(getTokimonQuery, (error, result) => {
       if (error)
@@ -24,7 +24,19 @@ express()
       var results = {'rows': result.rows };
       res.render('pages/tokidex', results)
     })
-  })
+  })*/
+  .get('/tokidex', async (req, res) => {
+  try {
+    const client = await pool.connect()
+    const result = await client.query('SELECT * FROM tokimon');
+    const results = { 'results': (result) ? result.rows : null};
+    res.render('pages/tokidex', results );
+    client.release();
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+})
   .get('/delete', (req, res) => res.render('pages/delete'))
   .post('/delete', async (req, res) => {
   const client = await pool.connect();
