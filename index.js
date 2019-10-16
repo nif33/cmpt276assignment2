@@ -16,21 +16,13 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
-/*  .get('/tokidex', (req,res) => {
-    var getTokimonQuery = `SELECT * FROM tokimon`;
-    pool.query(getTokimonQuery, (error, result) => {
-      if (error)
-        res.end(error);
-      var results = {'rows': result.rows };
-      res.render('pages/tokidex', results)
-    })
-  })*/
-  .get('/db', async (req, res) => {
+  .get('/tokidex', async (req, res) => res.render('pages/tokidex', results ))
+  .post('/tokidex', async(req, res) => {
   try {
     const client = await pool.connect()
     const result = await client.query('SELECT * FROM tokimon');
     const results = { 'results': (result) ? result.rows : null};
-    res.render('pages/db', results );
+  //  res.render('pages/tokidex', results );
     client.release();
   } catch (err) {
     console.error(err);
