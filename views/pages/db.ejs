@@ -1,23 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <% include ../partials/header.ejs %>
-</head>
+  <head>
+    <meta charset="utf-8">
+    <title>Tokidex</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
 
-<body>
+    <h1>Tokidex: Tokimon Tracking System</h1>
+    <h3>Hello Trainer! Welcome to the Tokidex, a place where you can keep track of all the Tokimon you encounter in your adventures.</h3>
 
-<% include ../partials/nav.ejs %>
+    <table>
+      <tr>
+        <th><h1>Name</h1></th>
+        <th><h1>Weight</h1></th>
+        <th><h1>Height</h1></th>
+        <th><h1>Fly</h1></th>
+        <th><h1>Fight</h1></th>
+        <th><h1>Fire</h1></th>
+        <th><h1>Electric</h1></th>
+        <th><h1>Ice</h1></th>
+        <th><h1>Total</h1></th>
+        <th><h1>Trainer</h1></th>
+      </tr>
+      <% rows.forEach((r) => { %>
+        <tr>
+          <th><%= r.name %></th>
+          <th><%= r.weight %></th>
+          <th><%= r.height %></th>
+          <th><%= r.fly %></th>
+          <th><%= r.fight %></th>
+          <th><%= r.fire %></th>
+          <th><%= r.electric %></th>
+          <th><%= r.ice %></th>
+          <th><%= r.total %></th>
+          <th><%= r.trainer %></th>
+        </tr>
+      <% }); %>
+    </table>
+    <button type="button" onclick="window.location.href = '/add';">ADD A NEW TOKIMON</button>
+    <button type="button" onclick="window.location.href = '/delete';">DELETE A TOKIMON</button>
+  </body>
 
-<div class="container">
-<h2>Database Results</h2>
-
-<ul>
-    <% results.forEach(function(r) { %>
-        <li><%= r.id %> - <%= r.name %></li>
-    <% }); %>
-</ul>
-
-</div>
-
-</body>
+  <script></script>
 </html>
