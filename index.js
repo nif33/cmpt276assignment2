@@ -12,7 +12,7 @@ express()
 
   .use(express.json())
   .use(express.urlencoded({ extended: false }))
-
+  
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
